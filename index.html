@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery with Prev and Next</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap">
+    <style>
+	body{
+	background: #F1F1F1;}
+	
+	h1{ font-family: 'Saira Extra Condensed', sans-serif; 
+		text-align: center; margin-bottom: 75px !important;}
+      #gallery{
+        width: 1000px;
+        height: 665px
+      }
+      #gallery img{
+        width: 100%
+      }
+    </style>
+</head>
+<body style="padding: 20px">
+  <div class="container text-center d-flex justify-content-center align-items-center flex-column" style="height: 100vh">
+
+    <h1 class="display-1 text-danger mb-4">Image Gallery</h1>
+
+    <div >
+      <img src="images/img-1.jpg" id="gallery" />
+    </div>
+
+    <div>
+      <button class="btn btn-sm btn-danger my-4" id="btnPrev" onclick="slides('prev')">Previous</button>
+      <button class="btn btn-sm btn-danger my-4" id="btnNext" onclick="slides('next')">Next</button>
+    </div>
+  </div>
+<script>            
+  var gallery = document.getElementById("gallery");
+
+  var imgArray = [ 'images/img-1.jpg', 'images/img-2.jpg', 'images/img-3.jpg', 'images/img-4.jpg', 'images/img-5.jpg', 'images/img-6.jpg', 'images/img-7.jpg', 'images/img-8.jpg' ]  
+
+  var count = 0;
+
+  // Buttons Actions 
+  const slides = btn => {
+    if(btn === "next"){
+      count++
+      if( count === imgArray.length){
+        count = imgArray.length - 1
+      }
+    }else{
+      count--
+      if( count < 0 ){
+        count = 0
+      }
+    }
+    gallery.src = imgArray[count]
+  }
+
+  // Images Auto Slide
+  setInterval(AutoSlider = () => {
+    count++;
+  if(count == imgArray.length){
+    count =  0
+  }
+  gallery.src = imgArray[count];
+  }, 3000)
+
+</script>
+</body>
+</html>
