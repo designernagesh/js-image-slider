@@ -1,71 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Image Gallery with Prev and Next</title>  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap">
-    <style>
-	body{
-	background: #F1F1F1;}
-	
-	h1{ font-family: 'Saira Extra Condensed', sans-serif; 
-		text-align: center; margin-bottom: 75px !important;}
-      #gallery{
-        width: 1000px;
-        height: 665px
-      }
-      #gallery img{
-        width: 100%
-      }
-    </style>
+  <meta charset="UTF-8">
+  <title>Javascript: Image Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+  <!-- Font Awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Custom CSS Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body style="padding: 20px">
-  <div class="container text-center d-flex justify-content-center align-items-center flex-column" style="height: 100vh">
+<body>
+  <div class="wrapper">
+    <div class="container">
 
-    <h1 class="display-1 text-danger mb-4">Image Gallery</h1>
+    <h1 class="display-3 text-danger">Image Gallery</h1>
+      <p class="lead">Auto change the images and navigate through left and right arrows 🙂!</p>
 
-    <div >
-      <img src="images/img-1.jpg" id="gallery" />
+    <div class="galleryContainer" >
+      <button class="arrowPrevious"> <i class="fas fa-chevron-left"></i> </button>
+      <div class="imageContainer">      
+        <img src="images/img-1.jpg" id="gallery" />
+      </div>
+      <button class="arrowNext"> <i class="fas fa-chevron-right"></i> </button>
     </div>
 
-    <div>
-      <button class="btn btn-sm btn-danger my-4" id="btnPrev" onclick="slides('prev')">Previous</button>
-      <button class="btn btn-sm btn-danger my-4" id="btnNext" onclick="slides('next')">Next</button>
-    </div>
   </div>
-<script>            
-  var gallery = document.getElementById("gallery");
-
-  var imgArray = [ 'images/img-1.jpg', 'images/img-2.jpg', 'images/img-3.jpg', 'images/img-4.jpg', 'images/img-5.jpg', 'images/img-6.jpg', 'images/img-7.jpg', 'images/img-8.jpg' ]  
-
-  var count = 0;
-
-  // Buttons Actions 
-  const slides = btn => {
-    if(btn === "next"){
-      count++
-      if( count === imgArray.length){
-        count = imgArray.length - 1
-      }
-    }else{
-      count--
-      if( count < 0 ){
-        count = 0
-      }
-    }
-    gallery.src = imgArray[count]
-  }
-
-  // Images Auto Slide
-  setInterval(AutoSlider = () => {
-    count++;
-  if(count == imgArray.length){
-    count =  0
-  }
-  gallery.src = imgArray[count];
-  }, 3000)
-
-</script>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
